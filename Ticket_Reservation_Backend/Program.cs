@@ -10,16 +10,19 @@ using TicketReservation.Models;
 using TicketReservation.Services;
 var builder = WebApplication.CreateBuilder(args);
 
+
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowAnyOrigin", builder =>
+    options.AddPolicy("AllowSpecificOrigin", builder =>
     {
         builder
-            .AllowAnyOrigin() // Allow access from any origin
+            .WithOrigins("https://traingo.netlify.app") // Replace with the allowed origin(s)
             .AllowAnyMethod()
             .AllowAnyHeader();
     });
 });
+
+
 
 builder.Services.Configure<MongoDBSettings>(builder.Configuration.GetSection("MongoDB"));
 builder.Services.Configure<MongoDBSettings>(builder.Configuration.GetSection("TrainDB"));
