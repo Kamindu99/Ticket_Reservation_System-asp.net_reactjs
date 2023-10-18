@@ -12,10 +12,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowSpecificOrigins", builder =>
+    options.AddPolicy("AllowAnyOrigin", builder =>
     {
         builder
-            .WithOrigins("https://traingo.netlify.app", "http://localhost:3000") // Add your allowed domains here
+            .AllowAnyOrigin() // Allow access from any origin
             .AllowAnyMethod()
             .AllowAnyHeader();
     });
