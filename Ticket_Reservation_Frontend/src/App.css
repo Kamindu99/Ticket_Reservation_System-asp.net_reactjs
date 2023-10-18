@@ -1,0 +1,401 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+.trendingev {
+  height: '200px';
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.381);
+}
+
+.trendingev:hover {
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.534);
+  transform: scale(0.95);
+  transition: 0.2s;
+}
+
+.avac .carousel-control-next-icon {
+  background-color: #666565;
+  /* Change the background color to your desired color */
+  margin-right: -240px;
+  height: 93%;
+  margin-top: 7%;
+}
+
+.avac .carousel-control-prev-icon {
+  margin-left: -240px;
+  background-color: #666565;
+  /* Change the background color to your desired color */
+  height: 93%;
+  margin-top: 8%;
+}
+
+.intro h1.animate {
+  overflow: hidden;
+  animation: reveal 1s ease-in-out;
+}
+
+@keyframes reveal {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+
+
+
+/* CSS for main section */
+.intro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  height: 620px;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%), url("https://www.informalnewz.com/wp-content/uploads/2023/03/Railway-Passengers.jpg");
+  background-size: cover;
+  background-position: relative;
+  background-repeat: no-repeat;
+}
+
+.intro h1 {
+  font-family: sans-serif;
+  font-size: 60px;
+  color: #fff;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.intro p {
+  font-size: 20px;
+  color: #d1d1d1;
+  text-transform: uppercase;
+  margin: 20px 0;
+}
+
+/*AboutUs*/
+.team-boxed {
+  color: #313437;
+  background-color: #eef4f7;
+}
+
+.team-boxed p {
+  color: #7d8285;
+}
+
+.team-boxed h2 {
+  font-weight: bold;
+  margin-bottom: 40px;
+  padding-top: 40px;
+  color: inherit;
+}
+
+@media (max-width: 767px) {
+  .team-boxed h2 {
+    margin-bottom: 25px;
+    padding-top: 25px;
+    font-size: 24px;
+  }
+}
+
+.team-boxed .intro {
+  font-size: 16px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.team-boxed .intro p {
+  margin-bottom: 0;
+}
+
+.team-boxed .people {
+  padding: 50px 0;
+}
+
+.team-boxed .item {
+  text-align: center;
+}
+
+.team-boxed .item .box {
+  text-align: center;
+  padding: 30px;
+  background-color: #fff;
+  margin-bottom: 30px;
+}
+
+.team-boxed .item .name {
+  font-weight: bold;
+  margin-top: 28px;
+  margin-bottom: 8px;
+  color: inherit;
+}
+
+.team-boxed .item .title {
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #d0d0d0;
+  letter-spacing: 2px;
+  font-size: 13px;
+}
+
+.team-boxed .item .description {
+  font-size: 15px;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  text-align: center
+}
+
+
+
+.team-boxed .social {
+  font-size: 18px;
+  color: #a2a8ae;
+}
+
+.team-boxed .social a {
+  color: inherit;
+  margin: 0 10px;
+  display: inline-block;
+  opacity: 0.7;
+}
+
+.team-boxed .social a:hover {
+  opacity: 1;
+}
+
+.client_section .heading_container {
+  margin-bottom: 20px;
+}
+
+.client_section .box {
+  margin: 15px 45px;
+  -webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25);
+  padding: 25px;
+}
+
+.client_section .box .client_info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.client_section .box .client_info .client_name h5 {
+  font-weight: 600;
+  color: #0c863b;
+}
+
+.client_section .box .client_info .client_name h6 {
+  margin-bottom: 0;
+  color: #bfc0c0;
+  font-weight: normal;
+  font-size: 15px;
+}
+
+.client_section .box .client_info i {
+  font-size: 24px;
+}
+
+.client_section .box p {
+  margin-top: 15px;
+}
+
+.client_section .carousel-control-prev,
+.client_section .carousel-control-next {
+  width: 45px;
+  height: 125px;
+  background-color: #045bbe;
+  opacity: 1;
+  font-size: 28px;
+  font-weight: bold;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.client_section .carousel-control-prev {
+  left: 0;
+}
+
+.client_section .carousel-control-next {
+  right: 0;
+}
+
+
+/* CSS for train list section */
+
+.trainlist body {
+  margin: 0;
+  padding: 0;
+  font-family: 'roboto', sans-serif;
+  background-color: #F2F2F2;
+}
+
+.trainlist h1 {
+  text-align: center;
+  color: #333333;
+}
+
+.trainlist .cardcontainer {
+  background-color: white;
+  margin-left: auto;
+  margin-right: auto;
+  transition: 0.3s;
+  box-shadow: 0 0 25px gray;
+  border-radius: 10px;
+}
+
+.trainlist .cardcontainer:hover {
+  box-shadow: 0 0 45px gray;
+}
+
+.trainlist .photo {
+  height: 200px;
+  width: 100%;
+}
+
+.trainlist .photo img {
+  height: 200px;
+  width: 100%;
+}
+
+.trainlist .txt1 {
+  text-align: center;
+  font-size: 17px;
+}
+
+.trainlist .content {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.trainlist .photos {
+  width: 90px;
+  height: 30px;
+  background-color: #E74C3C;
+  color: white;
+  position: relative;
+  top: -30px;
+  padding-left: 10px;
+  font-size: 20px;
+}
+
+.trainlist .txt4 {
+  font-size: 25px;
+  position: relative;
+  top: 10px;
+}
+
+.trainlist .txt5 {
+  position: relative;
+  top: -10px;
+  color: #E74C3C;
+  font-size: 17px;
+}
+
+.trainlist .txt2 {
+  position: relative;
+  overflow: hidden;
+  margin-top: -10px;
+}
+
+.trainlist .cardcontainer:hover>.photo {
+  height: 200px;
+
+}
+
+
+.trainlist .cardcontainer:hover {
+  scale: 1.01;
+}
+
+.trainlist .footer {
+  width: 80%;
+  height: 60px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -20px;
+  background-color: white;
+}
+
+.trainlist .btn {
+  position: relative;
+  top: 20px;
+  float: right;
+}
+
+.trainlist #heart {
+  cursor: pointer;
+}
+
+.trainlist .like {
+  float: left;
+  font-size: 22px;
+  position: relative;
+  top: 20px;
+  color: #333333;
+}
+
+.trainlist .fa-gratipay {
+  margin-right: 10px;
+  transition: 0.5s;
+}
+
+.trainlist .fa-gratipay:hover {
+  color: #E74C3C;
+}
+
+.trainlist .txt3 {
+  color: gray;
+  position: relative;
+  top: 18px;
+  font-size: 14px;
+}
