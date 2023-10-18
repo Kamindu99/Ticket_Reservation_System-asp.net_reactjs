@@ -16,7 +16,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowSpecificOrigin", builder =>
     {
         builder
-            .WithOrigins("http://localhost:3000", "https://traingo.netlify.app/") // Replace with the allowed origin(s)
+            .WithOrigins("https://traingo.netlify.app") // Replace with the allowed origin(s)
             .AllowAnyMethod()
             .AllowAnyHeader();
     });
