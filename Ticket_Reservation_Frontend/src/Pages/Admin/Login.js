@@ -33,7 +33,7 @@ export default function RegisterUser({ }) {
             userRole
         };
         console.log(NewReg);
-        axios.post("http://localhost:5068/api/Admin", NewReg)
+        axios.post("https://traingo.onrender.com/api/Admin", NewReg)
             .then((res) => {
                 localStorage.setItem('myData', JSON.stringify(res.data));
                 alert("Registration Successful");
@@ -73,7 +73,7 @@ export default function RegisterUser({ }) {
             setLoding(true);
 
             const response = await axios.post(
-                "http://localhost:5068/api/Admin/login",
+                "https://traingo.onrender.com/api/Admin/login",
                 {
                     email,
                     password

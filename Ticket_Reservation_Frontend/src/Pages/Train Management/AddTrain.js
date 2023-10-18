@@ -37,7 +37,7 @@ function AddTrain() {
     try {
       // Make a POST request to the specified URL (http://localhost:5000/aa)
       const response = await axios.post(
-        "http://localhost:5068/api/trains",
+        "https://traingo.onrender.com/api/trains",
         data
       );
 

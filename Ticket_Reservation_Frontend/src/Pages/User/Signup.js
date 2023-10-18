@@ -28,7 +28,7 @@ const Signup = () => {
       }
       // Send a POST request to your server on localhost:5000
       const response = await axios.post(
-        "http://localhost:5068/api/User",
+        "https://traingo.onrender.com/api/User",
         formData
       );
 

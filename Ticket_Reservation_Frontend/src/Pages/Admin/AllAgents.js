@@ -6,7 +6,7 @@ function AllAgents() {
 
   // call useEffcet for get admin list
   useEffect(() => {
-    axios.get("http://localhost:5068/api/Admin").then((res) => {
+    axios.get("https://traingo.onrender.com/api/Admin").then((res) => {
       console.log(res.data);
       setAllUsers(res.data);
     });
@@ -15,7 +15,7 @@ function AllAgents() {
   // handleDelete function
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5068/api/Admin/${id}`);
+      await axios.delete(`https://traingo.onrender.com/api/Admin/${id}`);
 
       alert("User Deleted Successfully");
 

@@ -54,7 +54,7 @@ function BookingCreate() {
         try {
             // Make a POST request to the specified URL (http://localhost)
             const response = await axios.post(
-                "http://localhost:5068/api/booking",
+                "https://traingo.onrender.com/api/booking",
                 data
             );
 
@@ -88,7 +88,7 @@ function BookingCreate() {
     // Fetch train data from the API
     const getTrainDetails = async () => {
         const id = window.location.pathname.split("/")[2];
-        const response = await axios.get(`http://localhost:5068/api/trains/${id}`);
+        const response = await axios.get(`https://traingo.onrender.com/api/trains/${id}`);
         settrainName(response.data.trainName);
         settrainId(response.data.id);
         settype(response.data.type);

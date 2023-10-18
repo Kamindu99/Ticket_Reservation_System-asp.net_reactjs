@@ -21,7 +21,7 @@ function EditTrain() {
   useEffect(() => {
     // Fetch the existing train data based on the ID from the URL
     axios
-      .get(`http://localhost:5068/api/trains/${id}   `)
+      .get(`https://traingo.onrender.com/api/trains/${id}   `)
       .then((response) => {
         setTrain(response.data);
       })
@@ -36,7 +36,7 @@ function EditTrain() {
 
     try {
       // Make a PUT request to update the train data
-      await axios.put(`http://localhost:5068/api/trains/${id}`, train);
+      await axios.put(`https://traingo.onrender.com/api/trains/${id}`, train);
 
       // Redirect to the train details page or any other appropriate action
       // You can use React Router for this purpose

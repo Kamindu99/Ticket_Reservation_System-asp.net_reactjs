@@ -17,7 +17,7 @@ const EditUserAdmin = () => {
   // Fetch user data from the API
   useEffect(() => {
     axios
-      .get(`http://localhost:5068/api/User/${id}   `)
+      .get(`https://traingo.onrender.com/api/User/${id}   `)
       .then((response) => {
         setFormData(response.data);
       })
@@ -37,7 +37,7 @@ const EditUserAdmin = () => {
     event.preventDefault();
 
     try {
-      await axios.put(`http://localhost:5068/api/User/${id}`, formData);
+      await axios.put(`https://traingo.onrender.com/api/User/${id}`, formData);
       alert("Account updated successfully!"); // You can display a success message or redirect to another page
       window.location.href = "/allusers";
     } catch (error) {

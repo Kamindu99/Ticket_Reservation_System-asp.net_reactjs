@@ -6,7 +6,7 @@ function AllUsers() {
 
   //get all users from the database
   useEffect(() => {
-    axios.get("http://localhost:5068/api/User").then((res) => {
+    axios.get("https://traingo.onrender.com/api/User").then((res) => {
       console.log(res.data);
       setAllUsers(res.data);
     });
@@ -15,7 +15,7 @@ function AllUsers() {
   //delete user function
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5068/api/User/${id}`);
+      await axios.delete(`https://traingo.onrender.com/api/User/${id}`);
 
       alert("User Deleted Successfully");
       localStorage.removeItem("token");
@@ -29,10 +29,10 @@ function AllUsers() {
   //create a function to handle active and inactive if active make it inactive and vice versa
   const handleActive = async (id) => {
     try {
-      const response = await axios.get(`http://localhost:5068/api/User/${id}`);
+      const response = await axios.get(`https://traingo.onrender.com/api/User/${id}`);
       const user = response.data;
       user.active = !user.active;
-      await axios.put(`http://localhost:5068/api/User/${id}`, user);
+      await axios.put(`https://traingo.onrender.com/api/User/${id}`, user);
       alert("User Details Updated Successfully");
       window.location.href = "/AllUsers";
     } catch (error) {

@@ -6,7 +6,7 @@ function ViewAllBooking() {
 
     // flech data
     useEffect(() => {
-        axios.get("http://localhost:5068/api/booking").then((res) => {
+        axios.get("https://traingo.onrender.com/api/booking").then((res) => {
             console.log(res.data);
             setAlltrains(res.data);
         });
@@ -15,7 +15,7 @@ function ViewAllBooking() {
     // delete booking
     const handleDelete = async (id) => {
         try {
-            await axios.delete(`http://localhost:5068/api/booking/${id}`);
+            await axios.delete(`https://traingo.onrender.com/api/booking/${id}`);
 
             alert("Booking Deleted Successfully");
             window.location.href = "/allbookings";
@@ -28,7 +28,7 @@ function ViewAllBooking() {
     const handleActive = async (id, train) => {
         try {
 
-            await axios.put(`http://localhost:5068/api/booking/${id}`, {
+            await axios.put(`https://traingo.onrender.com/api/booking/${id}`, {
                 ...train,
                 status: "Approved",
             });

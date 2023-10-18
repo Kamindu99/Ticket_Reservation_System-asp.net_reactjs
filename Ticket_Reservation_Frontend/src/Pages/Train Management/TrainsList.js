@@ -8,7 +8,7 @@ function TrainsList() {
   //get all trains from the database
   useEffect(() => {
     // Fetch the existing train data based on the ID from the URL
-    axios.get("http://localhost:5068/api/trains").then((res) => {
+    axios.get("https://traingo.onrender.com/api/trains").then((res) => {
       console.log(res.data);
       setTrains(res.data);
     });

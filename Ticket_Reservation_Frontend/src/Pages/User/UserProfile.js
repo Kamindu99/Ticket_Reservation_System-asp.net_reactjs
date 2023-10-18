@@ -10,7 +10,7 @@ function UserProfile() {
 
     //get user details from the database
     if (token) {
-      axios.get(`http://localhost:5068/api/User/${token}`).then((res) => {
+      axios.get(`https://traingo.onrender.com/api/User/${token}`).then((res) => {
         console.log(res.data);
         setUser(res.data);
       });
@@ -20,7 +20,7 @@ function UserProfile() {
   //delete user function
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5068/api/User/${id}`);
+      await axios.delete(`https://traingo.onrender.com/api/User/${id}`);
 
       alert("User Deleted Successfully");
       localStorage.removeItem("token");

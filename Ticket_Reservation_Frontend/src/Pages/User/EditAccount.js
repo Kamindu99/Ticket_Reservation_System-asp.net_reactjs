@@ -14,7 +14,7 @@ const EditAccount = () => {
   useEffect(() => {
     const id = localStorage.getItem("token");
     axios
-      .get(`http://localhost:5068/api/User/${id}   `)
+      .get(`https://traingo.onrender.com/api/User/${id}   `)
       .then((response) => {
         setFormData(response.data);
       })
@@ -36,7 +36,7 @@ const EditAccount = () => {
     try {
       // Check if the passwords match
       const id = localStorage.getItem("token");
-      await axios.put(`http://localhost:5068/api/User/${id}`, formData);
+      await axios.put(`https://traingo.onrender.com/api/User/${id}`, formData);
       alert("Account updated successfully!"); // You can display a success message or redirect to another page
       window.location.href = "/profile";
     } catch (error) {

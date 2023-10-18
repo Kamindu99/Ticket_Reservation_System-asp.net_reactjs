@@ -34,7 +34,7 @@ function BookingEdit() {
 
     // Fetch train data from the API
     const getBookingDetails = async () => {
-        const response = await axios.get(`http://localhost:5068/api/booking/${id}`);
+        const response = await axios.get(`https://traingo.onrender.com/api/booking/${id}`);
         settrainId(response.data.trainId)
         setBookdate(response.data.bookdate)
         setfromlocation(response.data.from)
@@ -74,7 +74,7 @@ function BookingEdit() {
 
         try {
             const response = await axios.put(
-                `http://localhost:5068/api/booking/${id}`,
+                `https://traingo.onrender.com/api/booking/${id}`,
                 data
             );
 
@@ -101,7 +101,7 @@ function BookingEdit() {
     }, [trainId])
 
     const getTrainDetails = async () => {
-        const response = await axios.get(`http://localhost:5068/api/trains/${trainId}`);
+        const response = await axios.get(`https://traingo.onrender.com/api/trains/${trainId}`);
         console.log(response.data);
         settrainName(response.data.trainName);
         settype(response.data.type);

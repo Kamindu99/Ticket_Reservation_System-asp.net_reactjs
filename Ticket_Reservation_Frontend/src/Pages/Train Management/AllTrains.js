@@ -6,7 +6,7 @@ function AllTrains() {
 
   //get all trains from the database
   useEffect(() => {
-    axios.get("http://localhost:5068/api/trains").then((res) => {
+    axios.get("https://traingo.onrender.com/api/trains").then((res) => {
       console.log(res.data);
       setAlltrains(res.data);
     });
@@ -15,7 +15,7 @@ function AllTrains() {
   //delete train function
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5068/api/trains/${id}`);
+      await axios.delete(`https://traingo.onrender.com/api/trains/${id}`);
 
       alert("Train Deleted Successfully");
     } catch (error) {
@@ -27,11 +27,11 @@ function AllTrains() {
   const handleActive = async (id) => {
     try {
       const response = await axios.get(
-        `http://localhost:5068/api/trains/${id}`
+        `https://traingo.onrender.com/api/trains/${id}`
       );
       const train = response.data;
       train.isActive = !train.isActive;
-      await axios.put(`http://localhost:5068/api/trains/${id}`, train);
+      await axios.put(`https://traingo.onrender.com/api/trains/${id}`, train);
       alert("Train Details Updated Successfully");
       window.location.href = "/alltrains";
     } catch (error) {

@@ -18,7 +18,7 @@ function ViewMyBookings() {
         const abc = { token: result }
         console.log(abc.token);
 
-        axios.get(`http://localhost:5068/api/booking/mybookings/${abc.token}`).then(res => {
+        axios.get(`https://traingo.onrender.com/api/booking/mybookings/${abc.token}`).then(res => {
 
             if (res.data.length != 0) {
                 setBookings(res.data)
@@ -46,7 +46,7 @@ function ViewMyBookings() {
 
     //cancle bookings
     const deleteOrder = (id) => {
-        axios.delete(`http://localhost:5068/api/booking/${id}`).then((res) => {
+        axios.delete(`https://traingo.onrender.com/api/booking/${id}`).then((res) => {
             console.log(res.data)
             showMessageDialog("Deleted", "Booking Deleted Successfully");
             window.location.reload();
