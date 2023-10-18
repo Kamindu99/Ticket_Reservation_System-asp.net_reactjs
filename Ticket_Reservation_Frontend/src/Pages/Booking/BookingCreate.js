@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import './Booking.css';
+import MessageDialog from "../../Component/Layouts/AlertBox";
 
 function BookingCreate() {
 
@@ -21,6 +22,14 @@ function BookingCreate() {
     const [total, settotal] = useState("0");
     const [trainId, settrainId] = useState("");
     const [trainName, settrainName] = useState("");
+
+    //alert box function
+    const [messageData, setMessageData] = useState();
+
+    const showMessageDialog = (name, message, callback) => {
+        setMessageData({ show: true, name, message, setMessageData: setMessageData, callback: callback ? callback : null });
+    }
+    //end alert box function
 
     // Handle form submission
     useEffect(() => {
@@ -58,11 +67,8 @@ function BookingCreate() {
                 data
             );
 
-            alert("Booking Added Successfully");
-
+            showMessageDialog("Success", "Booking Added Successfully", "/mybookings");
             // Handle the response as needed
-            //   console.log("Server response:", response.data);
-            window.location.href = "/mybookings";
 
             // Clear the form fields after successful submission
             setBookdate("");
@@ -103,9 +109,7 @@ function BookingCreate() {
         const userInfo = localStorage.getItem("name");
 
         if (userInfo == null) {
-            alert("You need to login first");
-            window.location.href = "/login";
-
+            showMessageDialog("Error", "You need to login first", "/login");
         }
     }, []);
 
@@ -321,7 +325,7 @@ function BookingCreate() {
                     </div>
                 </div>
             </div>
-
+            <MessageDialog {...messageData} />
         </div>
     )
 }

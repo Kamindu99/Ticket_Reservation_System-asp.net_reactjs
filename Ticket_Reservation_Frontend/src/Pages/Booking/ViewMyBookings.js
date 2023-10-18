@@ -32,24 +32,19 @@ function ViewMyBookings() {
             })
     }
 
-    const [messageData, setMessageData] = useState({ name: '', message: '' });
+    //alert box function
+    const [messageData, setMessageData] = useState();
 
-    const [show, setShow] = useState(false);
-
-    // ...
-
-    // Display the message dialog
-    const showMessageDialog = (name, message) => {
-        setShow(true);
-        setMessageData({ name, message });
+    const showMessageDialog = (name, message, callback) => {
+        setMessageData({ show: true, name, message, setMessageData: setMessageData, callback: callback ? callback : null });
     }
+    //end alert box function
 
     //cancle bookings
     const deleteOrder = (id) => {
         axios.delete(`https://traingo.onrender.com/api/booking/${id}`).then((res) => {
             console.log(res.data)
-            showMessageDialog("Deleted", "Booking Deleted Successfully");
-            window.location.reload();
+            showMessageDialog("Deleted", "Booking Deleted Successfully", "reload");
         })
     }
 
@@ -71,7 +66,7 @@ function ViewMyBookings() {
         if (daysDifference > 5) {
             // alert(`You cannot ${action == 2 ? "cancel" : "update"} this reservation. You can ${action == 2 ? "cancel" : "update"} reservation within 5 days of booking.`);
 
-            showMessageDialog("Deleted", `You cannot ${action == 2 ? "cancel" : "update"} this reservation. You can ${action == 2 ? "cancel" : "update"} reservation within 5 days of booking.`);
+            showMessageDialog("Error", `You cannot ${action == 2 ? "cancel" : "update"} this reservation. You can ${action == 2 ? "cancel" : "update"} reservation within 5 days of booking.`);
         } else {
             if (action == 2) {
                 deleteOrder(id)
@@ -146,7 +141,7 @@ function ViewMyBookings() {
                     <h3>There is no any Reservations</h3>
                 </div>}
             </div>
-            <MessageDialog showd={show} {...messageData} />
+            <MessageDialog  {...messageData} />
         </div>
     )
 }
