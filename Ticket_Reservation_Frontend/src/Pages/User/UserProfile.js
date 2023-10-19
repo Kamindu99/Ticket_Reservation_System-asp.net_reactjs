@@ -35,7 +35,7 @@ function UserProfile() {
     <div>
       {/* Center vertically and horizontally */}
       <div>
-        <header className="bg-primary text-white text-center py-5 mb-5">
+        <header className="bg-primary text-white text-center  py-2 mb-3">
           <h1>User Profile</h1>
           <p>{user.username}'s Profile</p>
         </header>

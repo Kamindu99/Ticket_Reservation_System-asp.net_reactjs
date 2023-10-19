@@ -8,9 +8,11 @@ const SearchableSelect = ({ options, onChangeDrop, name, value }) => {
         label: location,
     }));
     // State to store the selected option
-    const [selectedOption, setSelectedOption] = useState();
+    const [selectedOption, setSelectedOption] = useState(null);
 
     useEffect(() => {
+        if (value == null) return;
+        if (name == null) return
         setSelectedOption({ value: value ? value : '', label: value ? value : '' });
     }, [value, name])
 

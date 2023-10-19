@@ -1,5 +1,3 @@
-
-
 .userAccountcss .user-card-full {
     overflow: hidden;
 }
@@ -128,11 +126,29 @@
     color: #787273;
     margin-left: 10px;
 }
+
 .userAccountcss {
     background-image: url('https://img.freepik.com/free-vector/halftone-background-with-circles_23-2148907689.jpg?w=740&t=st=1696888281~exp=1696888881~hmac=38b123ed8c9273f47c2ebbe0870d70e6566512de252cb274ebe312af3ad558e6');
     background-size: cover;
     background-position: center;
-    
+
     justify-content: center;
     align-items: center;
-  }
+}
+
+.carditemsss .card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+.carditemsss .card:hover {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    background-color: #a23737;
+    color: #fff;
+}

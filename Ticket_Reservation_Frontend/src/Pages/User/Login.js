@@ -67,7 +67,7 @@ const Login = () => {
 
   return (
     <>
-      <header className="bg-primary text-white text-center py-5 mb-5">
+      <header className="bg-primary text-white text-center  py-2 mb-3">
         <h1>Login</h1>
         <p>Login to reserve train tickets</p>
       </header>

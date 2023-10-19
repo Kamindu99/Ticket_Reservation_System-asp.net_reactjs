@@ -45,7 +45,7 @@ const Signup = () => {
 
   return (
     <>
-      <header className="bg-primary text-white text-center py-5 mb-5">
+      <header className="bg-primary text-white text-center  py-2 mb-3">
         <h1>Sign Up</h1>
         <p>Signup to reserve train tickets</p>
       </header>

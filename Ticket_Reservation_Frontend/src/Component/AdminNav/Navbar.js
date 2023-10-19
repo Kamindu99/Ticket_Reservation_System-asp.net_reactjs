@@ -101,15 +101,15 @@ const AdminNavbar = () => {
                                 <a className={`nav-link nav-link-a-text me-3 ${isallagents ? 'active' : ''}`} href="/allagents">Agent Management</a>
                             </li>
 
-                            <li className="nav-item">
+                            <li className="nav-item" hidden={userType1 == "1"}>
                                 <a href='/alltrains' className={`nav-link me-3 nav-link-a-text ${isalltrains ? 'active' : ''}`}>Train Management</a>
                             </li>
 
-                            <li className="nav-item" hidden={userType1 == "0"}>
+                            <li className="nav-item" >
                                 <a href='/allbookings' className={`nav-link me-3 nav-link-a-text ${isallbookings ? 'active' : ''}`}>  Booking Management</a>
                             </li>
 
-                            <li className="nav-item" hidden={userType1 == "0"}>
+                            <li className="nav-item" hidden={userType1 == "1"}>
                                 <a className={`nav-link nav-link-a-text me-3 ${isallusers ? 'active' : ''}`} href="/allusers" >User Management</a>
                             </li>
 

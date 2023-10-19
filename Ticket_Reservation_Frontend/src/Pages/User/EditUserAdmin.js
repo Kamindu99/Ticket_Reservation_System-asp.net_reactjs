@@ -48,7 +48,7 @@ const EditUserAdmin = () => {
 
   return (
     <>
-      <header className="bg-primary text-white text-center py-5 mb-5">
+      <header className="bg-primary text-white text-center  py-2 mb-3">
         <h1>Edit Account</h1>
         <p>Edit Your User Account</p>
       </header>
@@ -137,11 +137,19 @@ const EditUserAdmin = () => {
                   required
                 />
               </div>
-              <button type="submit" className="btn btn-primary">
-                Register
-              </button>
+
+              <div class="row mt-4">
+                <div class="col-md-6">
+                  <input type="button" value="Cancel" class="btn btn-warning placeicon" style={{ width: '100%' }} onClick={() => { window.location.replace("/allusers") }} />
+                </div>
+                <div class="col-md-6">
+                  <input type="submit" value="Register" class="btn btn-success placeicon" style={{ width: '100%', color: 'white' }} />
+                </div>
+              </div>
             </form>
+            <br />
           </div>
+
         </div>
       </div>
     </>

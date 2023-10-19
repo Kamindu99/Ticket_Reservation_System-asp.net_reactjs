@@ -71,10 +71,10 @@ function TrainsList() {
             </div>
 
             <div class="col-2 col-md-2" >
-              <button type="submit" class="btn btn-primary ms-3 mt-4" style={{ height: '45px', fontSize: '20px' }}>
+              <button type="submit" class="btn btn-primary ms-3 " style={{ height: '41px', fontSize: '20px', marginTop: '29px' }}>
                 <i class="fas fa-search"></i>
               </button>
-              <button onClick={() => { setCleanFilter() }} type="button" class="btn btn-primary ms-3 mt-4" style={{ height: '45px' }}>
+              <button onClick={() => { setCleanFilter() }} type="button" class="btn btn-primary ms-3 " style={{ height: '41px', marginTop: '29px' }}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
                   <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
                 </svg>
