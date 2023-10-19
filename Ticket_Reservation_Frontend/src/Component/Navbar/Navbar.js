@@ -1,11 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import './Navbar.css';
+import MessageDialog from '../Layouts/AlertBox';
 
 const Navbar = () => {
     const [isSticky, setSticky] = useState(false)
     const [isLogin, setLogin] = useState(false)
     const [name, setName] = React.useState("");
     const [admin, setAdminName] = React.useState("");
+
+    //alert box function
+    const [messageData, setMessageData] = useState();
+
+    const showMessageDialog = (name, message, callback) => {
+        setMessageData({ show: true, name, message, setMessageData: setMessageData, callback: callback ? callback : null });
+    }
+    //end alert box function
 
     useEffect(() => {
         window.addEventListener("scroll", () => {
@@ -38,6 +47,7 @@ const Navbar = () => {
 
     const handleLogout = () => {
         localStorage.removeItem("myData");
+        // showMessageDialog("Success", "Booking Added Successfully", "/mybookings");
     };
 
     useEffect(() => {
@@ -53,7 +63,7 @@ const Navbar = () => {
         localStorage.removeItem("name");
         localStorage.removeItem("userInfo.");
         localStorage.removeItem("myData");
-        window.location.href = "/";
+        showMessageDialog("Success", "Successfully Log Out", "/login");
     };
 
     const str = window.location.href;
@@ -198,7 +208,7 @@ const Navbar = () => {
                                             <li>
                                                 <a
                                                     className={`dropdown-item `}
-                                                    href="/login"
+                                                    style={{ cursor: 'pointer' }}
                                                     onClick={handleuserLogout}
                                                 >
                                                     LogOut
@@ -233,6 +243,7 @@ const Navbar = () => {
                     </ul>
                 </div>
             </div>
+            <MessageDialog {...messageData} />
         </nav>
     );
 };

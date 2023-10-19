@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
+import MessageDialog from "../../Component/Layouts/AlertBox";
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -9,6 +10,14 @@ const Signup = () => {
     confirmPassword: "",
     nic: "",
   });
+
+  //alert box function
+  const [messageData, setMessageData] = useState();
+
+  const showMessageDialog = (name, message, callback) => {
+    setMessageData({ show: true, name, message, setMessageData: setMessageData, callback: callback ? callback : null });
+  }
+  //end alert box function
 
   // Handle form data change
   const handleChange = (event) => {
@@ -34,7 +43,8 @@ const Signup = () => {
 
       // Handle the response as needed
       console.log("Registration successful:", response.data);
-      alert("Registration successful");
+      // alert("Registration successful");
+      showMessageDialog("Success", "Registration successful", "/login");
 
       // You can also redirect the user to a different page here if needed.
     } catch (error) {
@@ -143,6 +153,7 @@ const Signup = () => {
             </p>
           </div>
         </div>
+        <MessageDialog {...messageData} />
       </div>
     </>
   );
