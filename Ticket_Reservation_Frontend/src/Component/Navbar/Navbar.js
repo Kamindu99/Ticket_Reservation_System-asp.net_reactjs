@@ -109,7 +109,7 @@ const Navbar = () => {
                         </li>
 
                         <li className="nav-item">
-                            <a href='/trainsList' className={`nav-link me-3 nav-link-a-text ${isalltrains ? 'active' : ''}`}>Trains</a>
+                            <a href='/trainsList' className={`nav-link me-3 nav-link-a-text ${isalltrains ? 'active' : ''}`}>Train Schedule</a>
                         </li>
 
                         <li className="nav-item" hidden={userType1 != "3"}>

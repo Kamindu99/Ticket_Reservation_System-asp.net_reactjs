@@ -1,11 +1,30 @@
 import axios from "axios";
 import React, { useState } from "react";
+import Alert from "../../Component/Layouts/AtertBar";
 
 const Login = () => {
   const [formData, setFormData] = useState({
     nic: "",
     password: "",
   });
+  const [showAlert, setShowAlert] = useState(false);
+  const [alertMessage, setAlertMessage] = useState("");
+  const [redirectTo, setRedirectTo] = useState('');
+  const [alertRole, setalertRole] = useState('');
+
+  const handleShowAlert = (role, message, redirect) => {
+    setShowAlert(true);
+    setAlertMessage(message);
+    setRedirectTo(redirect);
+    setalertRole(role)
+  };
+
+  const clearAlert = () => {
+    setShowAlert(false);
+    setAlertMessage("");
+    setRedirectTo('');
+    setalertRole('')
+  };
 
   // Handle form data change
   const handleChange = (event) => {
@@ -32,7 +51,9 @@ const Login = () => {
         localStorage.setItem("myData", JSON.stringify({
           "userRole": "3"
         }));
-        window.location.href = "/";
+
+        //window.location.href = "/";
+        handleShowAlert("success", "Login Successful!", '/')
       } else {
         // Handle unsuccessful login, show an error message, etc.
         console.log("Login failed.");
@@ -40,6 +61,7 @@ const Login = () => {
     } catch (error) {
       // Handle any network errors or other exceptions here.
       console.error("An error occurred:", error);
+      handleShowAlert("error", "Login Failed!", '')
     }
   };
 
@@ -105,6 +127,7 @@ const Login = () => {
             </p>
           </div>
         </div>
+        {showAlert && <Alert role={alertRole} message={alertMessage} onRedirect={redirectTo} clearAlert={clearAlert} />}
       </div>
     </>
   );

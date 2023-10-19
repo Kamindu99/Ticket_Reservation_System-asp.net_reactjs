@@ -1,80 +1,19 @@
-.alertbox body {
-    font-family: 'Varela Round', sans-serif;
-}
-
-.alertbox .modal-confirm {
-    color: #636363;
-    width: 550px;
-    margin: 30px auto;
-}
-
-.alertbox .modal-confirm .modal-content {
-    padding: 20px;
-    border-radius: 5px;
-    border: none;
-}
-
-.alertbox .modal-confirm .modal-header {
-    padding: 0 15px;
-    border-bottom: none;
-    position: relative;
-}
-
-.alertbox .modal-confirm h4 {
-    display: inline-block;
-    font-size: 26px;
-}
-
-.alertbox .modal-confirm .close {
-    position: absolute;
-    top: -5px;
-    right: -5px;
-}
-
-.alertbox .modal-confirm .modal-body {
-    color: #999;
-}
-
-.modal-confirm .modal-footer {
-    background: #ecf0f1;
-    border-color: #e6eaec;
-    text-align: right;
-    margin: 0 -20px -20px;
-    border-radius: 0 0 5px 5px;
-}
-
-.alertbox .modal-confirm .btn {
-    color: #fff;
+.baratert .alert {
+    position: fixed;
+    top: 0;
+    right: 0;
+    color: #ffffff;
+    padding: 10px;
     border-radius: 4px;
-    transition: all 0.4s;
-    border: none;
-    padding: 8px 20px;
-    outline: none !important;
+    margin: 10px;
+    transition: opacity 0.5s;
+    margin-top: 82px;
+    width: 400px;
+    text-align: center;
+    font-size: large;
+    letter-spacing: 2px;
 }
 
-.alertbox .modal-confirm .btn-info {
-    background: #b0c1c6;
-}
-
-.alertbox .modal-confirm .btn-info:hover,
-.alertbox .modal-confirm .btn-info:focus {
-    background: #92a9af;
-}
-
-.alertbox .modal-confirm .btn-danger {
-    background: #f15e5e;
-}
-
-.alertbox .modal-confirm .btn-danger:hover,
-.alertbox .modal-confirm .btn-danger:focus {
-    background: #ee3535;
-}
-
-.alertbox .modal-confirm .modal-footer .btn+.btn {
-    margin-left: 10px;
-}
-
-.alertbox .trigger-btn {
-    display: inline-block;
-    margin: 100px auto;
+.baratert .alert.hidden {
+    opacity: 0;
 }

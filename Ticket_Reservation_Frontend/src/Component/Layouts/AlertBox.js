@@ -23,14 +23,14 @@ const MessageDialog = (props) => {
 
     return (
         <>
-            <Modal show={display} onHide={handleClose}>
-                <Modal.Header closeButton>
+            <Modal show={display} onHide={handleClose} >
+                <Modal.Header closeButton >
                     <Modal.Title> {props.name}</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>
+                <Modal.Body style={{ border: '0px' }} >
                     {props.message}
                 </Modal.Body>
-                <Modal.Footer>
+                <Modal.Footer style={{ border: '0px' }}>
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>

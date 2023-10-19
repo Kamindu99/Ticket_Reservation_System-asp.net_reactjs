@@ -32,7 +32,7 @@ const Footer = () => {
                             <h5 className="heading">Services</h5>
                             <ul>
                                 <li>User Management</li>
-                                <li>Ticket Booking</li>
+                                <li onClick={() => { window.location.replace('/trainsList') }}>Ticket Booking</li>
                                 <li>See Trains</li>
                                 <li>Payment</li>
                             </ul>
@@ -57,7 +57,7 @@ const Footer = () => {
                         </div>
                     </div>
                     <div className="divider mb-4"> </div>
-                    <div className="row" style={{ fontSize: "10px", textAlign: "center" }}>
+                    <div className="row" style={{ fontSize: "10px", textAlign: "center", letterSpacing: '2px' }}>
                         <div>
                             Designed and Developed by Train Go Team <br />
                         </div>

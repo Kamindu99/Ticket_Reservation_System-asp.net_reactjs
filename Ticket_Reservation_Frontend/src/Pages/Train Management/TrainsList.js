@@ -1,20 +1,28 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import SearchableSelect from "../../Component/Layouts/SerchableSelect";
 
 function TrainsList() {
 
   const [trains, setTrains] = useState([]);
   const [trainss, setTrainss] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   //get all trains from the database
   useEffect(() => {
     // Fetch the existing train data based on the ID from the URL
+    getTrains()
+  }, []);
+
+  const getTrains = () => {
+    setIsLoading(true);
     axios.get("https://traingo.onrender.com/api/trains").then((res) => {
       console.log(res.data);
       setTrains(res.data);
       setTrainss(res.data);
+      setIsLoading(false);
     });
-  }, []);
+  }
 
   const [fromlocation, setfromlocation] = useState("Colombo");
   const [tolocation, settolocation] = useState("Colombo");
@@ -88,7 +96,7 @@ function TrainsList() {
             <img src='https://cdni.iconscout.com/illustration/premium/thumb/book-a-train-ticket-online-6276502-5217098.png' style={{ objectFit: 'cover', height: '100px', marginLeft: '20px' }} />
           </div>
           <div className="col-md-10 mb-6">
-            <h5 className="display-5">Reserve Tickets</h5>
+            <h5 className="display-5">Train Schedule</h5>
             <p className="lead"> Reserve Tickets by clicking Book Now Button</p>
           </div>
         </div>
@@ -96,41 +104,18 @@ function TrainsList() {
       </div>
 
       <div>
-        <form>
-          <div class="row" style={{ marginRight: '6%', marginLeft: '10%' }}>
-            <div class="col-4 col-md-4">
+        <form style={{ background: 'white', marginTop: '-80px', marginRight: '15%', marginLeft: '15%', boxShadow: ' 0 0 5px 0 rgba(0, 0, 0, 0.381)' }}>
+          <div class="row p-3 ms-5" >
+            <div class="col-5 col-md-5 me-5">
+              <label for="from" class="form-label">From </label>
+              <SearchableSelect options={locations} onChangeDrop={setfromlocation} />
             </div>
-            <div class="col-3 col-md-3">
-              <div class="row ms-3">
-                <div class="col-3 col-md-3">
-                  <label for="from" class="form-label">From</label>
-                </div>
-                <div class="col-9 col-md-9" >
-                  <select onChange={(e) => { setfromlocation(e.target.value) }} required name="cvcpwd" class="" style={{ width: '100%', height: '43px' }}>
-                    {locations.map((location) => (
-                      <option value={location.locationname}>{location.locationname}</option>
-                    ))}
-                  </select>
-                </div>
-              </div>
+
+            <div class="col-5 col-md-5">
+              <label for="from" class="form-label">To</label>
+              <SearchableSelect options={locations} onChangeDrop={settolocation} />
             </div>
-            <div class="col-1 col-md-1 text-center" >
-              ------
-            </div>
-            <div class="col-3 col-md-3">
-              <div class="row ">
-                <div class="col-3 col-md-3">
-                  <label for="from" class="form-label">To</label>
-                </div>
-                <div class="col-9 col-md-9">
-                  <select onChange={(e) => { settolocation(e.target.value) }} required name="cvcpwd" class="" style={{ width: '100%', height: '43px' }}>
-                    {locations.map((location) => (
-                      <option value={location.locationname}>{location.locationname}</option>
-                    ))}
-                  </select>
-                </div>
-              </div>
-            </div>
+
             <div class="col-1 col-md-1" >
               <button onClick={() => { setTrainss(trains) }} type="button" class="btn btn-primary ms-3" style={{ height: '43px' }}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
@@ -144,12 +129,18 @@ function TrainsList() {
       </div>
       <br />
       <br />
+      <br />
       <div className="container">
         <div className="row">
-          {trainss.length == 0 && (
+          {trainss.length == 0 && isLoading == false && (
             <div className="col-md-12 mb-6 text-center">
               <h5 className="display-5">No Trains Available</h5>
               <br />
+            </div>
+          )}
+          {isLoading == true && (
+            <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "40vh" }}>
+              <div className="spinner-border text-success" style={{ width: "100px", height: "100px", animationDuration: "1.5s" }} role="status"></div>
             </div>
           )}
           {trainss.map((train) => (
