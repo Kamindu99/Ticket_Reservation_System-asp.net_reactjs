@@ -24,69 +24,23 @@ function TrainsList() {
     });
   }
 
-  const [fromlocation, setfromlocation] = useState("Colombo");
-  const [tolocation, settolocation] = useState("Colombo");
+  const [fromlocation, setfromlocation] = useState("Colombo Fort");
+  const [tolocation, settolocation] = useState("Colombo Fort");
 
-  const locations = [
-    {
-      "id": 1,
-      "locationname": "Colombo",
-      "km": 0
-    },
-    {
-      "id": 2,
-      "locationname": "Kandy",
-      "km": 200
-    },
-    {
-      "id": 3,
-      "locationname": "Galle",
-      "km": 300
-    },
-    {
-      "id": 4,
-      "locationname": "Matara",
-      "km": 400
-    },
-    {
-      "id": 5,
-      "locationname": "Jaffna",
-      "km": 0
-    },
-    {
-      "id": 6,
-      "locationname": "Beliatta",
-      "km": 0
-    },
-    {
-      "id": 7,
-      "locationname": "Vavuniya",
-      "km": 0
-    },
-    {
-      "id": 8,
-      "locationname": "Maradana",
-      "km": 0
-    },
-    {
-      "id": 9,
-      "locationname": "Badulla",
-      "km": 0
-    },
-    {
-      "id": 10,
-      "locationname": "Kankesanthurai",
-      "km": 0
-    }
-  ]
+  const locations = [...new Set(trains?.map(({ from }) => from))];
 
-  useEffect(() => {
+  const tolocations = [...new Set(trains?.map(({ to }) => to))];
 
+  const setfilter = (event) => {
+    event.preventDefault();
     setTrainss(
       trains?.filter(({ to, from }) => from == fromlocation && to == tolocation) // Filter []
     );
+  }
 
-  }, [tolocation, fromlocation]);
+  const setCleanFilter = () => {
+    setTrainss(trains);
+  }
 
   return (
     <>
@@ -104,20 +58,23 @@ function TrainsList() {
       </div>
 
       <div>
-        <form style={{ background: 'white', marginTop: '-80px', marginRight: '15%', marginLeft: '15%', boxShadow: ' 0 0 5px 0 rgba(0, 0, 0, 0.381)' }}>
+        <form onSubmit={setfilter} style={{ background: 'white', marginTop: '-80px', marginRight: '15%', marginLeft: '15%', boxShadow: ' 0 0 5px 0 rgba(0, 0, 0, 0.381)' }}>
           <div class="row p-3 ms-5" >
-            <div class="col-5 col-md-5 me-5">
+            <div class="col-5 col-md-5 ">
               <label for="from" class="form-label">From </label>
               <SearchableSelect options={locations} onChangeDrop={setfromlocation} />
             </div>
 
             <div class="col-5 col-md-5">
               <label for="from" class="form-label">To</label>
-              <SearchableSelect options={locations} onChangeDrop={settolocation} />
+              <SearchableSelect options={tolocations} onChangeDrop={settolocation} />
             </div>
 
-            <div class="col-1 col-md-1" >
-              <button onClick={() => { setTrainss(trains) }} type="button" class="btn btn-primary ms-3" style={{ height: '43px' }}>
+            <div class="col-2 col-md-2" >
+              <button type="submit" class="btn btn-primary ms-3 mt-4" style={{ height: '45px', fontSize: '20px' }}>
+                <i class="fas fa-search"></i>
+              </button>
+              <button onClick={() => { setCleanFilter() }} type="button" class="btn btn-primary ms-3 mt-4" style={{ height: '45px' }}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
                   <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
                 </svg>

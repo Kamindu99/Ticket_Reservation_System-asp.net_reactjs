@@ -1,5 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { locations } from "../../Component/Locations";
+import SearchableSelect from "../../Component/Layouts/SerchableSelect";
 
 function AddTrain() {
   const [trainName, setTrainName] = useState("");
@@ -9,6 +11,8 @@ function AddTrain() {
   const [departureTime, setDepartureTime] = useState("");
   const [arrivalTime, setArrivalTime] = useState("");
   const [imageURL, setImageURL] = useState("");
+
+  const location = locations;
 
   // Handle form submission
   const handleSubmit = async (event) => {
@@ -62,7 +66,7 @@ function AddTrain() {
 
   return (
     <div>
-      <header className="bg-primary text-white text-center py-5 mb-5">
+      <header className="bg-primary text-white text-center py-2 mb-3">
         <h1>Add Train</h1>
         <p>Add Train Details</p>
       </header>
@@ -102,71 +106,62 @@ function AddTrain() {
                   required
                 />
               </div>
+              <div className="row mb-3">
+                <div className="col-md-6">
+                  <div className="mb-3">
+                    <label htmlFor="from" className="form-label">
+                      From
+                    </label>
 
-              <div className="mb-3">
-                <label htmlFor="from" className="form-label">
-                  From
-                </label>
+                    <SearchableSelect options={location} onChangeDrop={setFrom} />
+                  </div>
+                </div>
+                <div className="col-md-6">
+                  <div className="mb-3">
+                    <label htmlFor="to" className="form-label">
+                      To
+                    </label>
 
-                <input
-                  type="text"
-                  className="form-control"
-                  id="from"
-                  name="from"
-                  value={from}
-                  onChange={(event) => setFrom(event.target.value)}
-                  required
-                />
+                    <SearchableSelect options={location} onChangeDrop={setTo} />
+                  </div>
+                </div>
               </div>
+              <div className="row">
+                <div className="col-md-6">
+                  <div className="mb-3">
+                    <label htmlFor="departureTime" className="form-label">
+                      Departure Time
+                    </label>
 
-              <div className="mb-3">
-                <label htmlFor="to" className="form-label">
-                  To
-                </label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="departureTime"
+                      name="departureTime"
+                      value={departureTime}
+                      onChange={(event) => setDepartureTime(event.target.value)}
+                      required
+                    />
+                  </div>
+                </div>
+                <div className="col-md-6">
+                  <div className="mb-3">
+                    <label htmlFor="arrivalTime" className="form-label">
+                      Arrival Time
+                    </label>
 
-                <input
-                  type="text"
-                  className="form-control"
-                  id="to"
-                  name="to"
-                  value={to}
-                  onChange={(event) => setTo(event.target.value)}
-                  required
-                />
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="arrivalTime"
+                      name="arrivalTime"
+                      value={arrivalTime}
+                      onChange={(event) => setArrivalTime(event.target.value)}
+                      required
+                    />
+                  </div>
+                </div>
               </div>
-
-              <div className="mb-3">
-                <label htmlFor="departureTime" className="form-label">
-                  Departure Time
-                </label>
-
-                <input
-                  type="text"
-                  className="form-control"
-                  id="departureTime"
-                  name="departureTime"
-                  value={departureTime}
-                  onChange={(event) => setDepartureTime(event.target.value)}
-                  required
-                />
-              </div>
-
-              <div className="mb-3">
-                <label htmlFor="arrivalTime" className="form-label">
-                  Arrival Time
-                </label>
-
-                <input
-                  type="text"
-                  className="form-control"
-                  id="arrivalTime"
-                  name="arrivalTime"
-                  value={arrivalTime}
-                  onChange={(event) => setArrivalTime(event.target.value)}
-                  required
-                />
-              </div>
-
               <div className="mb-3">
                 <label htmlFor="imageURL" className="form-label">
                   Image URL
@@ -197,6 +192,7 @@ function AddTrain() {
           </div>
         </div>
       </div>
+      <br />
     </div>
   );
 }
