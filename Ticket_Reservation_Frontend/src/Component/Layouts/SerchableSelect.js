@@ -1,37 +1,35 @@
 import React, { useState } from 'react';
+import Select from 'react-select';
 
 const SearchableSelect = ({ options, onChangeDrop }) => {
-    const [filter, setFilter] = useState('');
-    const filteredOptions = options.filter((option) =>
-        option.locationname.toLowerCase().includes(filter.toLowerCase())
-    );
+    // Define your list of locations as an array of objects with 'value' and 'label' properties.
+    const dropdownoptions = options.map(location => ({
+        value: location.locationname,
+        label: location.locationname,
+    }));
 
-    const handleFilterChange = (e) => {
-        setFilter(e.target.value);
+    // State to store the selected option
+    const [selectedOption, setSelectedOption] = useState(null);
+
+    // Handler for selecting an option
+    const handleSelect = (selectedOption) => {
+        setSelectedOption(selectedOption);
+        onChangeDrop(selectedOption?.value);
     };
 
     return (
-        <div className="input-group">
-            <input
-                type="text"
-                className="form-control"
-                placeholder="Search..."
-                value={filter}
-                onChange={handleFilterChange}
-            />
+        <div>
+            <Select
+                value={selectedOption}
+                onChange={handleSelect}
+                options={dropdownoptions}
+                isSearchable
+                placeholder="Select a location..."
 
-            <select
-                className="form-select"
-                onChange={(e) => { onChangeDrop(e.target.value); console.log(e.target.value); }}
-            >
-                {filteredOptions.map((option, index) => (
-                    <option key={index} value={option.locationname}>
-                        {option.locationname}
-                    </option>
-                ))}
-            </select>
+            />
         </div>
     );
+
 };
 
 export default SearchableSelect;
