@@ -59,7 +59,7 @@ function TrainsList() {
 
       <div>
         <form onSubmit={setfilter} style={{ background: 'white', marginTop: '-80px', marginRight: '15%', marginLeft: '15%', boxShadow: ' 0 0 5px 0 rgba(0, 0, 0, 0.381)' }}>
-          <div class="row p-3 ms-5" >
+          <div class="row p-3 ms-5 pb-4"  >
             <div class="col-5 col-md-5 ">
               <label for="from" class="form-label">From </label>
               <SearchableSelect options={locations} onChangeDrop={setfromlocation} />
@@ -84,7 +84,6 @@ function TrainsList() {
           </div>
         </form>
       </div>
-      <br />
       <br />
       <br />
       <div className="container">
