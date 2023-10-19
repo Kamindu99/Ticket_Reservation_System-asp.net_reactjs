@@ -97,18 +97,25 @@ function EditTrain() {
                 <label htmlFor="type" className="form-label">
                   Type
                 </label>
-                <input
-                  type="text"
-                  className="form-control"
+
+                <select
+                  className="form-select"
                   id="type"
                   name="type"
+                  type="text"
                   value={train.type}
                   onChange={handleInputChange}
                   required
-                />
+                >
+                  <option value="Express">Express</option>
+                  <option value="Intercity">Intercity</option>
+                  <option value="NightMail">NightMail</option>
+                  <option value="Slow">Slow</option>
+                </select>
+
               </div>
 
-              <div className="row mb-3">
+              <div className="row mb-2">
                 <div className="col-md-6">
                   <div className="mb-3">
                     <label htmlFor="from" className="form-label">
@@ -126,14 +133,14 @@ function EditTrain() {
                   </div>
                 </div>
               </div>
-              <div className="row mb-3">
+              <div className="row mb-2">
                 <div className="col-md-6">
                   <div className="mb-3">
                     <label htmlFor="departureTime" className="form-label">
                       Departure Time
                     </label>
                     <input
-                      type="text"
+                      type="time"
                       className="form-control"
                       id="departureTime"
                       name="departureTime"
@@ -149,7 +156,7 @@ function EditTrain() {
                       Arrival Time
                     </label>
                     <input
-                      type="text"
+                      type="time"
                       className="form-control"
                       id="arrivalTime"
                       name="arrivalTime"
@@ -174,9 +181,15 @@ function EditTrain() {
                   required
                 />
               </div>
-              <button type="submit" className="btn btn-primary">
-                Update Train
-              </button>
+
+              <div class="row mt-4">
+                <div class="col-md-6">
+                  <input type="button" value="Cancel" class="btn btn-warning placeicon" style={{ width: '100%' }} onClick={() => { window.location.replace("/alltrains") }} />
+                </div>
+                <div class="col-md-6">
+                  <input type="submit" value="Update Train" class="btn btn-success placeicon" style={{ width: '100%', color: 'white' }} />
+                </div>
+              </div>
             </form>
           </div>
           <div className="col-md-6">
