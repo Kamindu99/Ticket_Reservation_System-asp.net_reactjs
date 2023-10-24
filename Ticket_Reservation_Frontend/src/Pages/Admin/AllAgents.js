@@ -1,8 +1,17 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import MessageDialog from "../../Component/Layouts/AlertBox";
 
 function AllAgents() {
   const [AllUsers, setAllUsers] = useState([]);
+
+  //alert box function
+  const [messageData, setMessageData] = useState();
+
+  const showMessageDialog = (name, message, callback) => {
+    setMessageData({ show: true, name, message, setMessageData: setMessageData, callback: callback ? callback : null });
+  }
+  //end alert box function
 
   // call useEffcet for get admin list
   useEffect(() => {
@@ -17,9 +26,7 @@ function AllAgents() {
     try {
       await axios.delete(`https://traingo.onrender.com/api/Admin/${id}`);
 
-      alert("User Deleted Successfully");
-
-      window.location.href = "/allagents";
+      showMessageDialog("Success", "User Deleted Successfully", "reload");
     } catch (error) {
       console.error("Error deleting user data:", error);
     }
@@ -91,6 +98,7 @@ function AllAgents() {
             ))}
           </tbody>
         </table>
+        <MessageDialog {...messageData} />
       </div>
     </>
   );
