@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './Form.css';
 import axios from "axios";
+import MessageDialog from '../../Component/Layouts/AlertBox';
 
 
 export default function RegisterUser({ }) {
@@ -13,6 +14,14 @@ export default function RegisterUser({ }) {
 
     const [error, setError] = useState(false);
     const [loding, setLoding] = useState(false);
+
+    //alert box function
+    const [messageData, setMessageData] = useState();
+
+    const showMessageDialog = (name, message, callback) => {
+        setMessageData({ show: true, name, message, setMessageData: setMessageData, callback: callback ? callback : null });
+    }
+    //end alert box function
 
     // call useeffcet for get localStorage
     useEffect(() => {
@@ -86,8 +95,7 @@ export default function RegisterUser({ }) {
                 const data = response.data;
                 console.log(data);
                 localStorage.setItem("myData", JSON.stringify(data));
-                alert("Successfully logged in");
-                window.location.href = "/Dashboard";
+                showMessageDialog("Success", "Successfully logged in", "/Dashboard");
 
             } else {
                 // Wrong password or other error
@@ -120,7 +128,7 @@ export default function RegisterUser({ }) {
 
                                 <input className="inputabc" type="text" placeholder="Name" id="Name" onChange={(e) => { setName(e.target.value); }} required />
                                 <input className="inputabc" type="email" placeholder="Email" id="Email" onChange={(e) => { setEmail(e.target.value); }} required />
-                                <input className="inputabc" type="number" placeholder="Mobile" id="Number" onChange={(e) => { setNum(e.target.value); }} required />
+                                <input className="inputabc" type="text" minLength={10} placeholder="Mobile" id="Number" onChange={(e) => { setNum(e.target.value); }} required />
                                 <input className="inputabc" type="password" placeholder="Password" id="Password" onChange={(e) => { setPassword(e.target.value); }} required />
                                 <div className="role-selection">
                                     <label>
@@ -178,7 +186,7 @@ export default function RegisterUser({ }) {
                 </div>
             </div>
 
-
+            <MessageDialog {...messageData} />
 
         </div>
     )

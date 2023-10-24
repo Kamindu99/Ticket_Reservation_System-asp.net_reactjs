@@ -1,11 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import './Navbar.css';
+import MessageDialog from '../Layouts/AlertBox';
 
 const AdminNavbar = () => {
     const [isSticky, setSticky] = useState(false)
     const [isLogin, setLogin] = useState(false)
     const [name, setName] = React.useState("");
     const [admin, setAdminName] = React.useState("");
+
+    //alert box function
+    const [messageData, setMessageData] = useState();
+
+    const showMessageDialog = (name, message, callback) => {
+        setMessageData({ show: true, name, message, setMessageData: setMessageData, callback: callback ? callback : null });
+    }
+    //end alert box function
 
     useEffect(() => {
         window.addEventListener("scroll", () => {
@@ -19,6 +28,7 @@ const AdminNavbar = () => {
 
     const handleLogout = () => {
         localStorage.removeItem("myData");
+        showMessageDialog("Success", "Successfully Log Out", "/login");
     };
 
     useEffect(() => {
@@ -31,6 +41,7 @@ const AdminNavbar = () => {
     const handleuserLogout = () => {
         localStorage.removeItem("token");
         localStorage.removeItem("name");
+        showMessageDialog("Success", "Successfully Log Out", "/login");
         window.location.href = "/";
     };
 
@@ -170,7 +181,7 @@ const AdminNavbar = () => {
                                             <li>
                                                 <a
                                                     className={`dropdown-item `}
-                                                    href="/login"
+                                                    style={{ cursor: 'pointer' }}
                                                     onClick={handleLogout}
                                                 >
                                                     LogOut
@@ -191,8 +202,8 @@ const AdminNavbar = () => {
                                                 <li>
                                                     <a
                                                         className={`dropdown-item `}
-                                                        href="/login"
                                                         onClick={handleuserLogout}
+                                                        style={{ cursor: 'pointer' }}
                                                     >
                                                         LogOut
                                                     </a>
@@ -227,6 +238,7 @@ const AdminNavbar = () => {
                     </div>
                 </div>
             </nav>
+            <MessageDialog {...messageData} />
         </div>
     );
 };

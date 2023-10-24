@@ -1,6 +1,7 @@
 import React, { useReducer, useState, useEffect } from "react"
 import './User.css';
 import axios from "axios";
+import MessageDialog from "../../Component/Layouts/AlertBox";
 
 
 const ProfileEditAdmin = () => {
@@ -9,6 +10,14 @@ const ProfileEditAdmin = () => {
     const [mobileNumber, setNum] = useState("");
     const [password, setPassword] = useState("");
     const [userRole, setRole] = useState(''); // Initialize the role state
+
+    //alert box function
+    const [messageData, setMessageData] = useState();
+
+    const showMessageDialog = (name, message, callback) => {
+        setMessageData({ show: true, name, message, setMessageData: setMessageData, callback: callback ? callback : null });
+    }
+    //end alert box function
 
     //call useeffcet for flech data
     useEffect(() => {
@@ -39,6 +48,10 @@ const ProfileEditAdmin = () => {
         setNum(e.target.value);
         setPassword(e.target.value);
         setRole(e.target.value);
+    }
+
+    const onUpdate = async (e) => {
+        showMessageDialog("Success", "Profile Update Successful", "");
     }
 
     return (
@@ -75,28 +88,28 @@ const ProfileEditAdmin = () => {
                                                                 <div class="col-sm-6">
                                                                     <p class="m-b-10 f-w-600">Name</p>
 
-                                                                    <input class="text-muted mb-4" style={{ width: '150px' }} type="text" name="Name" value={name} onChange={e => onInputChange(e)} />
+                                                                    <input class="text-muted mb-4" style={{ width: '150px' }} type="text" name="Name" value={name} onChange={e => setName(e.target.value)} />
                                                                 </div>
                                                                 <div class="col-sm-6">
                                                                     <p class="m-b-10 f-w-600">Email</p>
-                                                                    <input class="text-muted mb-4" style={{ width: '150px' }} type="text" name="Name" value={email} onChange={e => onInputChange(e)} />
+                                                                    <input class="text-muted mb-4" style={{ width: '150px' }} type="text" name="emame" value={email} onChange={e => setEmail(e.target.value)} />
                                                                 </div>
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col-sm-6">
                                                                     <p class="m-b-10 f-w-600">Mobile Number</p>
-                                                                    <input class="text-muted mb-4" style={{ width: '150px' }} type="text" name="Email" value={email} onChange={e => onInputChange(e)} />
+                                                                    <input class="text-muted mb-4" style={{ width: '150px' }} type="text" name="Email" value={mobileNumber} onChange={e => setNum(e.target.value)} />
                                                                 </div>
                                                                 <div class="col-sm-6">
                                                                     <p class="m-b-10 f-w-600">User Type</p>
-                                                                    <input class="text-muted mb-4" style={{ width: '150px' }} type="text" name="Num" value={mobileNumber} onChange={e => onInputChange(e)} disabled />
+                                                                    <input class="text-muted mb-4" style={{ width: '150px' }} type="text" name="Num" value={userRole} onChange={e => setNum(e.target.value)} disabled />
                                                                 </div>
                                                             </div>
 
                                                             <div class="row">
                                                                 <div class="col-sm-6">
                                                                     <p class="m-b-10 f-w-600">Password</p>
-                                                                    <input class="text-muted mb-4" style={{ width: '150px' }} type="password" Name="Password" value={password} onChange={e => onInputChange(e)} />
+                                                                    <input class="text-muted mb-4" style={{ width: '150px' }} type="password" Name="Password" value={password} onChange={e => setPassword(e.target.value)} />
                                                                 </div>
                                                                 <div class="col-sm-6">
                                                                     <p class="m-b-10 f-w-600">Confirm Password</p>
@@ -114,7 +127,7 @@ const ProfileEditAdmin = () => {
 
                                                             <button className="btn btn-info a123 me-5 text-white" type="button" name="submit" style={{ width: '40%' }} >Cancel</button>
 
-                                                            <button className="btn btn-danger a123 text-white" type="submit" name="submit" style={{ width: '40%' }} >Update</button>
+                                                            <button className="btn btn-danger a123 text-white" type="button" name="submit" style={{ width: '40%' }} onClick={onUpdate}>Update</button>
 
                                                         </form>
 
@@ -130,6 +143,7 @@ const ProfileEditAdmin = () => {
 
                 </div>
             </div>
+            <MessageDialog {...messageData} />
         </div>
 
 
